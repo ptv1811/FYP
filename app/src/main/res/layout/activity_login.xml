@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/term_condition"
+        android:layout_width="276dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/ralewayregular"
+        android:gravity="center"
+        android:text="@string/terms"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="421dp"
+        android:layout_marginBottom="224dp"
+        android:fontFamily="@font/ralewayregular"
+        android:text="Welcome"
+        android:textColor="@color/myOrange"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/term_condition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.ornach.nobobutton.NoboButton
+        android:id="@+id/fb_login"
+        android:layout_width="326dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="56dp"
+        android:fontFamily="@font/ralewaylight"
+        android:paddingStart="15dp"
+        android:paddingEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome"
+        app:nb_backgroundColor="#FFFFFF"
+        app:nb_drawableResource="@drawable/fb_icon"
+        app:nb_gravity="left"
+        app:nb_iconPadding="100dp"
+        app:nb_iconPosition="right"
+        app:nb_radius="100dp"
+        app:nb_text="Connect with Facebook              "
+        app:nb_textColor="@color/myOrange"
+        app:nb_textSize="15sp" />
+
+    <com.ornach.nobobutton.NoboButton
+        android:id="@+id/gg_login"
+        android:layout_width="326dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="56dp"
+        android:fontFamily="@font/ralewaylight"
+        android:paddingStart="15dp"
+        android:paddingEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fb_login"
+        app:nb_backgroundColor="#FFFFFF"
+        app:nb_drawableResource="@drawable/gg_icon"
+        app:nb_gravity="left"
+        app:nb_iconPadding="50dp"
+        app:nb_iconPosition="right"
+        app:nb_radius="100dp"
+        app:nb_text="Connect with Google                   "
+        app:nb_textColor="@color/myOrange"
+        app:nb_textSize="15sp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

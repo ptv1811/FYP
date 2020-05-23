@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "54645131302",
+    "firebase_url": "https://find-your-pets-f7384.firebaseio.com",
+    "project_id": "find-your-pets-f7384",
+    "storage_bucket": "find-your-pets-f7384.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54645131302:android:8ce2897cd42e9f27e87ee7",
+        "android_client_info": {
+          "package_name": "com.example.findyourpets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54645131302-2flisd22h70rcqhvf4c41hlkccqn1nhs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.findyourpets",
+            "certificate_hash": "c97b31b174a20a7809b4eed1b56fc1cb147b0682"
+          }
+        },
+        {
+          "client_id": "54645131302-70qcpftb0eulkq4hea1lte8enijken4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjcL0_R4CgQBlnPPGE9bg2unCKqzcMNDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54645131302-70qcpftb0eulkq4hea1lte8enijken4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
