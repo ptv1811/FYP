@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/new_feed"
+        android:enabled="true"
+        android:title="Newsfeed"
+        android:icon="@drawable/ic_home_black_24dp" />
+    <item
+        android:id="@+id/profile"
+        android:enabled="true"
+        android:title="Profile"
+        android:icon="@drawable/ic_account_circle_black_24dp" />
+    <item
+        android:id="@+id/post"
+        android:enabled="true"
+        android:title="Upload Post"
+        android:icon="@drawable/ic_border_color_black_24dp"/>
+    <item
+        android:id="@+id/settings"
+        android:enabled="true"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings_black_24dp"/>
+</menu>
