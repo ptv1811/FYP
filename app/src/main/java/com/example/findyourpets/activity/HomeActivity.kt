@@ -2,14 +2,28 @@ package com.example.findyourpets.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.findyourpets.R
 import com.google.firebase.database.*
 import com.example.findyourpets.`object`.User
+import com.example.findyourpets.fragment.NewsFeed
+import com.example.findyourpets.fragment.Profile
+import com.example.findyourpets.fragment.Settings
+import com.example.findyourpets.fragment.UploadPost
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var ref:DatabaseReference
     private lateinit var nuser:User
+
+    private val newsFeed:Fragment= NewsFeed()
+    val profile:Fragment= Profile()
+    val uploadPost:Fragment= UploadPost()
+    val settings:Fragment= Settings()
+    val fManager:FragmentManager = supportFragmentManager
+    var active:Fragment= newsFeed
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,5 +54,40 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         })
+
+        val bottomNavigationView:BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        fManager.beginTransaction().add(R.id.fragment_container, profile, "profile").hide(profile).commit()
+        fManager.beginTransaction().add(R.id.fragment_container, uploadPost, "upload post").hide(uploadPost).commit()
+        fManager.beginTransaction().add(R.id.fragment_container, settings, "settings").hide(settings).commit()
+        fManager.beginTransaction().add(R.id.fragment_container, newsFeed, "newsfeed").commit()
+    }
+
+    private val mOnNavigationItemSelectedListener=BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId){
+            R.id.new_feed ->{
+                fManager.beginTransaction().hide(active).show(newsFeed).commit()
+                active=newsFeed
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.profile->{
+                fManager.beginTransaction().hide(active).show(profile).commit()
+                active=profile
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.post->{
+                fManager.beginTransaction().hide(active).show(uploadPost).commit()
+                active=uploadPost
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.settings->{
+                fManager.beginTransaction().hide(active).show(settings).commit()
+                active=settings
+                return@OnNavigationItemSelectedListener true
+            }
+
+        }
+        false
     }
 }

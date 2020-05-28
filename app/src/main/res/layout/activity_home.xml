@@ -7,9 +7,11 @@
     android:background="@color/myTan"
     tools:context=".activity.HomeActivity">
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/bottom_navigation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -17,5 +19,16 @@
         android:background="#FFFFFF"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_navigation_menu"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="680dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".activity.HomeActivity"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

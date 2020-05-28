@@ -3,4 +3,7 @@
     <string name="terms">By signing in, you agree to our Terms of Service and Privacy Policy</string>
     <string name="facebook_app_id">970841040052557</string>
     <string name="fb_login_protocol_scheme">fb970841040052557</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
