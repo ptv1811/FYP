@@ -66,25 +66,22 @@ class LoginActivity : AppCompatActivity() {
         }
 
         //Set FB Login to button
-        fbLogin.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                LoginManager.getInstance().logInWithReadPermissions(this@LoginActivity, listOf("email"))
-                LoginManager.getInstance().registerCallback(mCallbackManager, object: FacebookCallback<LoginResult>{
-                    override fun onSuccess(result: LoginResult?) {
-                        handleFacebookAccessToken(result!!.accessToken)
-                    }
+        fbLogin.setOnClickListener {
+            LoginManager.getInstance().logInWithReadPermissions(this@LoginActivity, listOf("email"))
+            LoginManager.getInstance().registerCallback(mCallbackManager, object: FacebookCallback<LoginResult>{
+                override fun onSuccess(result: LoginResult?) {
+                    handleFacebookAccessToken(result!!.accessToken)
+                }
 
-                    override fun onCancel() {
-                        Log.d("cancel", "Facebook onCancel")
-                    }
+                override fun onCancel() {
+                    Log.d("cancel", "Facebook onCancel")
+                }
 
-                    override fun onError(error: FacebookException?) {
-                        Log.d("error", "Facebook onError")
-                    }
-                })
-
-            }
-        })
+                override fun onError(error: FacebookException?) {
+                    Log.d("error", "Facebook onError")
+                }
+            })
+        }
 
         //Set GG Login to button
         ggLogin.setOnClickListener(object:View.OnClickListener{
@@ -169,6 +166,7 @@ class LoginActivity : AppCompatActivity() {
             intent.putExtra("isActive", "true")
             intent.putExtra("phoneNumber",user.phoneNumber)
             intent.putExtra("isAdmin", "false")
+            intent.putExtra("photoUri", user.photoUrl.toString())
             intent.putExtra("createdDated", user.metadata!!.creationTimestamp.toString())
             startActivity(intent)
             finish()

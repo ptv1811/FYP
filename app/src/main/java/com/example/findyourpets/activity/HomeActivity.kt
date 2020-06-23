@@ -36,6 +36,7 @@ class HomeActivity : AppCompatActivity() {
         val userActive:String= intent.extras!!.getString("isActive")!!
         val userAdmin:String= intent.extras!!.getString("isAdmin")!!
         val userCreatedDate:String= intent.extras!!.getString("createdDated")!!
+        val userPhotoUri: String = intent.extras!!.getString("photoUri")!!
         //val userPhone:String=intent.extras!!.getString("phoneNumber")!!
 
         ref.child("Users/").child(userID).addValueEventListener(object :ValueEventListener{
@@ -46,7 +47,7 @@ class HomeActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 val user: User? =p0.getValue(User::class.java)
                 if (user==null){
-                    nuser= User(userEmail, userName, userAdmin.toBoolean(), userCreatedDate, userActive.toBoolean(), "NA","NA","NA")
+                    nuser= User(userEmail, userName, userAdmin.toBoolean(), userCreatedDate, userActive.toBoolean(), "NA","NA","NA",userPhotoUri)
                     ref.child("Users/").child("$userID/").setValue(nuser)
                 }
                 else{

@@ -9,7 +9,8 @@ class User(
     var isActive: Boolean=false,
     var phoneNumber: String="",
     var gender: String="",
-    var favoritePet: String=""
+    var favoritePet: String="",
+    var photoUri: String=""
 ) : Account(email, name, isAdmin, createdDate){
     constructor() : this("","",false,"")
 }

@@ -7,4 +7,79 @@
     android:background="@color/myTan"
     tools:context=".activity.EditProfileActivity">
 
+
+    <LinearLayout
+        android:id="@+id/round_rect_layout"
+        android:background="@drawable/rounded_rect"
+        android:layout_width="409dp"
+        android:layout_height="526dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/edit_profile_title"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="112dp"
+        android:gravity="center_vertical"
+        android:text="Edit Profile"
+        android:textColor="@color/myOrange"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/back_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back_button"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginEnd="152dp"
+        android:background="@drawable/circle_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.121">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/avatar_edit"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/cat_ava"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/sign_out_button"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/upload_avatar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="132dp"
+        android:background="@drawable/ic_baseline_add_a_photo_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout1"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
