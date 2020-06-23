@@ -9,15 +9,17 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:screenOrientation="portrait"
-        tools:ignore="LockedOrientationActivity"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.HomeActivity"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+        tools:ignore="LockedOrientationActivity">
+        <activity android:name=".activity.EditProfileActivity"></activity>
+        <activity android:name=".activity.LoginActivity" />
+        <activity
+            android:name=".activity.HomeActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
@@ -25,6 +27,7 @@
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
