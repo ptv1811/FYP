@@ -1,9 +1,11 @@
 package com.example.findyourpets.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 import com.example.findyourpets.R
 import com.google.firebase.database.*
 import com.example.findyourpets.`object`.User
@@ -63,6 +65,8 @@ class HomeActivity : AppCompatActivity() {
         fManager.beginTransaction().add(R.id.fragment_container, uploadPost, "upload post").hide(uploadPost).commit()
         fManager.beginTransaction().add(R.id.fragment_container, settings, "settings").hide(settings).commit()
         fManager.beginTransaction().add(R.id.fragment_container, newsFeed, "newsfeed").commit()
+
+
     }
 
     private val mOnNavigationItemSelectedListener=BottomNavigationView.OnNavigationItemSelectedListener { item ->

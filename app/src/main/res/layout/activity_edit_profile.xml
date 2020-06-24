@@ -8,18 +8,162 @@
     tools:context=".activity.EditProfileActivity">
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/round_rect_layout"
-        android:background="@drawable/rounded_rect"
         android:layout_width="409dp"
         android:layout_height="526dp"
         android:layout_marginBottom="1dp"
+        android:background="@drawable/rounded_rect"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="140dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="135dp"
+            android:layout_marginEnd="135dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/round_button"
+            android:text="Save"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/fullNameEdit"
+            android:layout_width="337dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:inputType="text"
+            android:textColor="@color/myDark"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fullName" />
+
+        <EditText
+            android:id="@+id/emailEdit"
+            android:layout_width="337dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/myDark"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        <EditText
+            android:id="@+id/phoneEdit"
+            android:layout_width="337dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:inputType="phone"
+            android:textColor="@color/myDark"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/gender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+        <TextView
+            android:id="@+id/fullName"
+            android:layout_width="168dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="36dp"
+            android:text="Full name"
+            android:textColor="@color/myOrange"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="167dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="36dp"
+            android:text="Phone number"
+            android:textColor="@color/myOrange"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/gender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="167dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="36dp"
+            android:text="Gender"
+            android:textColor="@color/myOrange"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/favoritePet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+        <TextView
+            android:id="@+id/favoritePet"
+            android:layout_width="167dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="36dp"
+            android:text="Favorite pet"
+            android:textColor="@color/myOrange"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/save_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="167dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="36dp"
+            android:text="Email"
+            android:textColor="@color/myOrange"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fullName" />
+
+        <Spinner
+            android:id="@+id/genderEdit"
+            android:layout_width="337dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:backgroundTint="@color/myOrange"
+            android:textColor="@color/myDark"
+            app:layout_constraintBottom_toTopOf="@+id/favoritePet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+        <Spinner
+            android:id="@+id/favoritePetEdit"
+            android:layout_width="337dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:backgroundTint="@color/myOrange"
+            android:textColor="@color/myDark"
+            app:layout_constraintBottom_toTopOf="@+id/save_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/favoritePet" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/back_button"
@@ -64,7 +208,6 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:src="@drawable/cat_ava"
             app:civ_border_color="#FFFFFF"
             app:civ_border_width="4dp"
             app:layout_constraintBottom_toTopOf="@+id/sign_out_button"
