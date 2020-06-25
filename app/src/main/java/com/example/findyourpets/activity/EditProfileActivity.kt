@@ -38,7 +38,6 @@ class EditProfileActivity : AppCompatActivity() {
 
     private var IMAGE_REQUEST: Int = 1000
     private lateinit var avatarUri : Uri
-    private lateinit var uploadTask: StorageTask<UploadTask.TaskSnapshot>
     private lateinit var  storageRef : StorageReference
     private lateinit var imageRef: StorageReference
     lateinit var avatarEdit : CircularImageView
@@ -48,6 +47,7 @@ class EditProfileActivity : AppCompatActivity() {
     private val favoritePetOption: Array<String> = arrayOf("Dog", "Cat", "Others")
     private lateinit var genderAdapter: ArrayAdapter<String>
     private lateinit var favoritePetAdapter: ArrayAdapter<String>
+    private lateinit var muser: User
 
     private val picasso = Picasso.get()
 
@@ -83,17 +83,26 @@ class EditProfileActivity : AppCompatActivity() {
 
         val menuListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val photoUri : Uri = Uri.parse(dataSnapshot.child("photoUri").getValue(String::class.java))
-
                 val user = dataSnapshot.getValue<User>()
-                fullNameEdit.setText(user!!.name)
+                muser= user!!
+                fullNameEdit.setText(user.name)
                 phoneEdit.setText(user.phoneNumber)
-                if (user.email != "null")
+
+                if (user.email != "null") {
                     emailEdit.setText(user.email)
+                }
                 avatarUri = Uri.parse(user.photoUri)
                 picasso.load(user.photoUri).error(R.drawable.cat_ava).into(avatarEdit)
 
+                if (user.gender != "NA"){
+                    val genderSelected: Int = genderAdapter.getPosition(muser.gender)
+                    genderEdit.setSelection(genderSelected)
+                }
 
+                if (user.favoritePet != "NA"){
+                    val favoritePetSelected: Int = favoritePetAdapter.getPosition(muser.favoritePet)
+                    favoritePetEdit.setSelection(favoritePetSelected)
+                }
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -101,7 +110,7 @@ class EditProfileActivity : AppCompatActivity() {
             }
         }
 
-        database.addListenerForSingleValueEvent(menuListener)
+        database.addValueEventListener(menuListener)
 
         backButton.setOnClickListener{
             finish()
@@ -113,6 +122,19 @@ class EditProfileActivity : AppCompatActivity() {
 
         saveButton.setOnClickListener{
             uploadImageToFireBaseStorage(avatarUri)
+            muser.name = fullNameEdit.text.toString()
+            if (emailEdit.text.toString() == ""){
+                muser.email = "null"
+            }
+            else
+                muser.email = emailEdit.text.toString()
+            Log.d("email: ", emailEdit.text.toString())
+            muser.phoneNumber = phoneEdit.text.toString()
+            muser.gender = genderEdit.getItemAtPosition(genderEdit.selectedItemPosition).toString()
+            Log.d("gender: ", muser.gender)
+            muser.favoritePet = favoritePetEdit.getItemAtPosition(favoritePetEdit.selectedItemPosition).toString()
+
+            database.setValue(muser)
             finish()
         }
     }
@@ -143,7 +165,7 @@ class EditProfileActivity : AppCompatActivity() {
             }
         }
             .addOnFailureListener{
-                Toast.makeText(this, "Failed to upload to storage", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Failed to upload to storage", Toast.LENGTH_SHORT).show()
                 progressDialog.visibility= View.GONE
             }
     }

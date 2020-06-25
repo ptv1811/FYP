@@ -21,11 +21,11 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var nuser:User
 
     private val newsFeed:Fragment= NewsFeed()
-    val profile:Fragment= Profile()
-    val uploadPost:Fragment= UploadPost()
-    val settings:Fragment= Settings()
-    val fManager:FragmentManager = supportFragmentManager
-    var active:Fragment= newsFeed
+    private val profile:Fragment= Profile()
+    private val uploadPost:Fragment= UploadPost()
+    private val settings:Fragment= Settings()
+    private val fManager:FragmentManager = supportFragmentManager
+    private var active:Fragment= newsFeed
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
