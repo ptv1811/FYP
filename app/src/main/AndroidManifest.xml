@@ -4,8 +4,8 @@
     package="com.example.findyourpets">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
         tools:ignore="LockedOrientationActivity">
-        <activity android:name=".activity.EditProfileActivity"></activity>
+        <activity android:name=".activity.UploadPostActivity"></activity>
+        <activity android:name=".activity.EditProfileActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity
             android:name=".activity.HomeActivity"

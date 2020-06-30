@@ -5,14 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.commit
 import com.example.findyourpets.R
 import com.google.firebase.database.*
 import com.example.findyourpets.`object`.User
 import com.example.findyourpets.fragment.NewsFeed
 import com.example.findyourpets.fragment.Profile
 import com.example.findyourpets.fragment.Settings
-import com.example.findyourpets.fragment.UploadPost
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
@@ -22,7 +20,7 @@ class HomeActivity : AppCompatActivity() {
 
     private val newsFeed:Fragment= NewsFeed()
     private val profile:Fragment= Profile()
-    private val uploadPost:Fragment= UploadPost()
+    //private val uploadPost:Fragment= UploadPost()
     private val settings:Fragment= Settings()
     private val fManager:FragmentManager = supportFragmentManager
     private var active:Fragment= newsFeed
@@ -62,7 +60,7 @@ class HomeActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         fManager.beginTransaction().add(R.id.fragment_container, profile, "profile").hide(profile).commit()
-        fManager.beginTransaction().add(R.id.fragment_container, uploadPost, "upload post").hide(uploadPost).commit()
+        //fManager.beginTransaction().add(R.id.fragment_container, uploadPost, "upload post").hide(uploadPost).commit()
         fManager.beginTransaction().add(R.id.fragment_container, settings, "settings").hide(settings).commit()
         fManager.beginTransaction().add(R.id.fragment_container, newsFeed, "newsfeed").commit()
 
@@ -82,8 +80,8 @@ class HomeActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.post->{
-                fManager.beginTransaction().hide(active).show(uploadPost).commit()
-                active=uploadPost
+                val intent = Intent(this, UploadPostActivity::class.java)
+                startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.settings->{

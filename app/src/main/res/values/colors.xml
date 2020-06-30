@@ -6,4 +6,19 @@
     <color name="myOrange">#FAC447</color>
     <color name="myDark">#707070</color>
     <color name="myTan">#F5F4F0</color>
+    <color name="myDarkerOrange">#EB7C27</color>
+    <color name="myGrey">#817B6E</color>
+    <color name="myBlack">#000000</color>
+    <color name="myBrown">#977322</color>
+    <color name="myWhite">#FFFFFF</color>
+    
+    <array name="color_picker">
+        <item>@color/myDarkerOrange</item>
+        <item>@color/myGrey</item>
+        <item>@color/myBlack</item>
+        <item>@color/myBrown</item>
+        <item>@color/myWhite</item>
+
+    </array>
+    
 </resources>

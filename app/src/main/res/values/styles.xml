@@ -5,13 +5,13 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/myOrange</item>
         <item name="colorPrimaryDark">@color/myOrange</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/myOrange</item>
     </style>
 
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/myOrange</item>
         <item name="colorPrimaryDark">@color/myOrange</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/myOrange</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
