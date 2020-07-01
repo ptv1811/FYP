@@ -169,30 +169,37 @@
         android:layout_marginEnd="17dp"
         android:textColor="@color/myOrange"
         android:textSize="15sp"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/petLostAtEdit" />
 
-    <com.jem.rubberpicker.RubberRangePicker
+    <EditText
         android:id="@+id/petWeightEdit"
         android:layout_width="303dp"
         android:layout_height="44dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="17dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/petPhoneEdit" />
-
-    <EditText
-        android:id="@+id/petPhoneEdit2"
-        android:layout_width="303dp"
-        android:layout_height="44dp"
         android:layout_marginStart="29dp"
+        android:layout_marginTop="1dp"
+        android:inputType="number"
         android:layout_marginEnd="17dp"
         android:textColor="@color/myOrange"
         android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/petPhoneEdit" />
+
+    <EditText
+        android:id="@+id/petNote"
+        android:layout_width="303dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="17dp"
+        android:textColor="@color/myOrange"
+        android:textSize="15sp"
+        android:inputType="textMultiLine"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView4"

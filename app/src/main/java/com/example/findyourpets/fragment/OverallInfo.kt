@@ -20,9 +20,6 @@ import com.thebluealliance.spectrum.SpectrumPalette
 
 class OverallInfo: Fragment(){
 
-    private lateinit var user: FirebaseUser
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var database: DatabaseReference
     private val dogBreedOptions: Array<String> = arrayOf("Corgi", "Pug", "Poodle", "Vietnamese", "Golden Retriever", "Others")
     private val catBreedOptions: Array<String> = arrayOf("British Longhair", "British Shorthair","Sphynx", "Vietnamese", "Russian", "Others")
     var petChosen: String = "NA"
@@ -114,9 +111,6 @@ class OverallInfo: Fragment(){
             editor.putString("Pet Color", petColor)
             editor.apply()
         }
-
-
-
 
         Log.d("Pet outside onclick: ", petChosen)
         return rootView

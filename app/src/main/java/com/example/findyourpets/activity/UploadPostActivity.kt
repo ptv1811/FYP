@@ -12,14 +12,7 @@ class UploadPostActivity : AppCompatActivity() {
 
     private lateinit var stepView: StepView
     private lateinit var postInfoView: ViewPager2
-    private lateinit var postButton: Button
     private lateinit var closeButton: Button
-
-    private var petChosen: String = "NA"
-    private var petFoundOrLost: String = "NA"
-    private var petGender: String = "NA"
-    private var petBreed: String = "NA"
-    private var petColor: String = "NA"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
