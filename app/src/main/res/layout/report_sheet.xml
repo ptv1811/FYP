@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="193dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="109dp"
+        android:gravity="center"
+        android:text="Report this post?"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/reportButtonConfirm"
+        android:layout_width="156dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/round_button"
+        android:fontFamily="@font/ralewaybold"
+        android:text="Yes"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/reportButtonCancel"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/reportButtonCancel"
+        android:layout_width="156dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="25dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/ralewaybold"
+        android:text="Cancel"
+        android:clickable="true"
+        android:gravity="center"
+        android:textColor="@color/myOrange"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/reportButtonConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        android:focusable="true" />
+</androidx.constraintlayout.widget.ConstraintLayout>

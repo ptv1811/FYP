@@ -11,6 +11,7 @@
     <color name="myBlack">#000000</color>
     <color name="myBrown">#977322</color>
     <color name="myWhite">#FFFFFF</color>
+    <color name="shimmerBackground">#dddddd</color>
     
     <array name="color_picker">
         <item>@color/myDarkerOrange</item>

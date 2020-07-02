@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
         tools:ignore="LockedOrientationActivity">
-        <activity android:name=".activity.UploadPostActivity"></activity>
+        <activity android:name=".activity.ChatActivity"></activity>
+        <activity android:name=".activity.UploadPostActivity" />
         <activity android:name=".activity.EditProfileActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity

@@ -65,8 +65,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
     implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'com.google.android.material:material:1.1.0'
-    implementation 'com.github.Chrisvin:RubberPicker:v1.5'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     implementation 'com.bitvale:switcher:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
+    implementation 'com.firebaseui:firebase-ui-database:6.2.1'
 }

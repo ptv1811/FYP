@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/newFeedAvatar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@color/shimmerBackground"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/newFeedUsername"
+            android:layout_width="144dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/ralewaybold"
+            android:gravity="center_vertical"
+            android:background="@color/shimmerBackground"
+            android:textColor="@color/myDark"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/newFeedAvatar"
+            app:layout_constraintTop_toTopOf="@+id/newFeedAvatar" />
+
+        <TextView
+            android:id="@+id/newFeedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/shimmerBackground"
+            app:layout_constraintBottom_toBottomOf="@+id/newFeedAvatar"
+            app:layout_constraintStart_toEndOf="@+id/newFeedAvatar"
+            app:layout_constraintTop_toBottomOf="@+id/newFeedUsername"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/newFeedOption"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_baseline_more_vert_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/newFeedChat"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/ic_baseline_chat_24"
+            app:layout_constraintEnd_toStartOf="@+id/newFeedOption"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/newFeedName"
+            android:layout_width="351dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@color/shimmerBackground"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/myDark"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/newFeedLostAt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newFeedHashtag"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <TextView
+            android:id="@+id/newFeedLostAt"
+            android:layout_width="351dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@color/shimmerBackground"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/myDark"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/newFeedPhone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newFeedName" />
+
+        <TextView
+            android:id="@+id/newFeedPhone"
+            android:layout_width="351dp"
+            android:background="@color/shimmerBackground"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/myDark"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/newFeedWeight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newFeedLostAt" />
+
+        <TextView
+            android:id="@+id/newFeedWeight"
+            android:layout_width="351dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/myDark"
+            android:textSize="15sp"
+            android:background="@color/shimmerBackground"
+            app:layout_constraintBottom_toTopOf="@+id/newFeedNote"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newFeedPhone" />
+
+        <TextView
+            android:id="@+id/newFeedNote"
+            android:layout_width="351dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/myDark"
+            android:background="@color/shimmerBackground"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newFeedWeight" />
+
+        <TextView
+            android:id="@+id/newFeedHashtag"
+            android:layout_width="351dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="21dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/myOrange"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/shimmerBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newFeedAvatar" />
+
+        <ImageView
+            android:id="@+id/newFeedPetImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toBottomOf="@+id/newFeedNote" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

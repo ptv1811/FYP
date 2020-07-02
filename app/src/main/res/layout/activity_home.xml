@@ -11,6 +11,7 @@
         layout="@layout/container_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
          />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
