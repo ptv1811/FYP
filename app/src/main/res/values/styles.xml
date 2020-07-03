@@ -1,14 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme." parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/myOrange</item>
+        <item name="colorPrimary">@color/myWhite</item>
         <item name="colorPrimaryDark">@color/myOrange</item>
         <item name="colorAccent">@color/myOrange</item>
     </style>
 
-    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+
+
+    <style name="Theme.AppCompat.Light.NoActionBar." parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/myOrange</item>
         <item name="colorPrimaryDark">@color/myOrange</item>
         <item name="colorAccent">@color/myOrange</item>

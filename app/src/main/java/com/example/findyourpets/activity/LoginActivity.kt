@@ -11,6 +11,9 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import com.cometchat.pro.core.AppSettings
+import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.exceptions.CometChatException
 import com.example.findyourpets.R
 import com.facebook.*
 import com.ornach.nobobutton.NoboButton
@@ -39,12 +42,30 @@ class LoginActivity : AppCompatActivity() {
     lateinit var mCallbackManager:CallbackManager
     private lateinit var mAuth:FirebaseAuth
     lateinit var mGoogleSignInClient:GoogleSignInClient
-    lateinit var ref:DatabaseReference
-    lateinit var curUser: FirebaseUser
+
+
+
+    var appID : String = "208055a14a02152"
+    var region: String = "us"
+    var authKey: String = "8f6c81a29d471c4ee96f5c94da978cf999f30dfa"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region)
+            .build()
+
+        CometChat.init(this, appID, appSettings, object : CometChat.CallbackListener<String?>() {
+            override fun onSuccess(successMessage: String?) {
+
+            }
+
+            override fun onError(e: CometChatException) {
+
+            }
+        })
+
         FacebookSdk.sdkInitialize(applicationContext)
         setContentView(R.layout.activity_login)
         val textView:TextView = findViewById(R.id.term_condition)
@@ -168,6 +189,22 @@ class LoginActivity : AppCompatActivity() {
             intent.putExtra("isAdmin", "false")
             intent.putExtra("photoUri", user.photoUrl.toString())
             intent.putExtra("createdDated", user.metadata!!.creationTimestamp.toString())
+
+            val cometUser = com.cometchat.pro.models.User(user.uid, user.displayName)
+            cometUser.avatar = user.photoUrl.toString()
+            CometChat.createUser(cometUser, authKey, object:
+                CometChat.CallbackListener<com.cometchat.pro.models.User>() {
+                override fun onSuccess(p0: com.cometchat.pro.models.User?) {
+
+                }
+
+                override fun onError(p0: CometChatException?) {
+
+                }
+
+            })
+
+
             startActivity(intent)
             finish()
         }

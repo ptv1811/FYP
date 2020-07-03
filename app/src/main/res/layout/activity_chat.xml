@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#FFFFFF"
     android:layout_height="match_parent"
     tools:context=".activity.ChatActivity">
 
+
+    <com.stfalcon.chatkit.messages.MessagesList
+        android:id="@+id/chatMessageList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:incomingDefaultBubbleColor="@color/myTan"
+        app:incomingDefaultBubblePressedColor="@color/myTan"
+        app:incomingDefaultBubbleSelectedColor="@color/gray"
+        app:incomingDefaultImageOverlayPressedColor="@color/myTan"
+        app:incomingDefaultImageOverlaySelectedColor="@color/myTan"
+        app:incomingTextColor="@color/black"
+        app:incomingTextLinkColor="@color/myBlack"
+        app:incomingTextSize="18sp"
+        app:outcomingDefaultBubbleColor="@color/myOrange"
+        app:outcomingDefaultBubblePressedColor="@color/myOrange"
+        app:outcomingDefaultBubbleSelectedColor="@color/myOrange"
+        app:outcomingDefaultImageOverlayPressedColor="@color/myOrange"
+        app:outcomingDefaultImageOverlaySelectedColor="@color/myOrange"
+        app:outcomingTextColor="@color/white"
+        app:outcomingTextLinkColor="@color/myBlack"
+        app:outcomingTextSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/chatMessageInput"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.stfalcon.chatkit.messages.MessageInput
+        android:layout_width="345dp"
+        android:id="@+id/chatMessageInput"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tan_rounded_button"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        app:inputHint="Aa"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:inputTextColor="@color/myOrange"
+        app:inputButtonDefaultIconPressedColor="@color/myOrange"
+        app:inputButtonDefaultBgColor="@color/myOrange"
+        app:showAttachmentButton="true"
+        app:attachmentButtonBackground="@color/myTan"
+        app:attachmentButtonDefaultIconPressedColor="@color/myDarkerOrange"
+        app:attachmentButtonDefaultIconColor="@color/myOrange"
+        app:inputMaxLines="3"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

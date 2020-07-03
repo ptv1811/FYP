@@ -65,7 +65,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="12dp"
             android:background="@drawable/ic_baseline_chat_24"
             app:layout_constraintEnd_toStartOf="@+id/newFeedOption"
             app:layout_constraintTop_toTopOf="parent" />

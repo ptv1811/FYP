@@ -66,6 +66,8 @@ class NewsFeed : Fragment() {
 
         val rootView= inflater.inflate(R.layout.fragment_news_feed, container, false)
 
+
+
         mAuth= FirebaseAuth.getInstance()
         curUser = mAuth.currentUser!!
 
@@ -78,9 +80,6 @@ class NewsFeed : Fragment() {
         newFeeds.layoutManager = layoutManager
         newFeeds.visibility = View.INVISIBLE
 
-
-
-
         postRef = FirebaseDatabase.getInstance().reference.child("Posts")
         userRef = FirebaseDatabase.getInstance().reference.child("Users")
         shimmerFrameLayout= rootView.findViewById(R.id.shimmerLayout)
@@ -91,6 +90,7 @@ class NewsFeed : Fragment() {
 
         myAdapter =
             object : FirebaseRecyclerAdapter<Post, FirebaseViewHolder>(options) {
+                @SuppressLint("SetTextI18n")
                 override fun onBindViewHolder(holder: FirebaseViewHolder, position: Int, model: Post) {
 
                     disableShimmer()
@@ -157,8 +157,6 @@ class NewsFeed : Fragment() {
                     }
 
                     holder.option.setOnClickListener {
-                        Log.d("position: ", holder.adapterPosition.toString())
-                        Log.d("position1: ", getRef(holder.adapterPosition).toString())
                         val reportOption = ReportDialogFragment()
                         val sharedPreferences = activity?.getSharedPreferences("reportPrefs", Context.MODE_PRIVATE)
                         val editor = sharedPreferences!!.edit()

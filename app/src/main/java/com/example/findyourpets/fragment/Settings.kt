@@ -1,6 +1,7 @@
 package com.example.findyourpets.fragment
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +16,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.cometchat.pro.core.AppSettings
+import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.exceptions.CometChatException
 import com.example.findyourpets.R
 import com.example.findyourpets.`object`.MyAdapter
 import com.example.findyourpets.`object`.User
@@ -38,9 +42,18 @@ class Settings : Fragment() {
     private lateinit var ref:DatabaseReference
     private val optionsTitle: Array<String> = arrayOf("Edit Profile","Push Notification","Help Center", "Sign Out")
 
+    var apiKey: String = "3ac99f1d28610dd2d009b40300762140354758e6"
+    var appID : String = "208055a14a02152"
+    var region: String = "us"
+    var authKey: String = "8f6c81a29d471c4ee96f5c94da978cf999f30dfa"
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView: View = inflater.inflate(R.layout.fragment_settings, container, false)
+
+        val appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region)
+            .build()
+
         database = Firebase.database.reference
         avatarView = rootView.findViewById(R.id.avatar_settings)
         val progressBarAvatar : ProgressBar = rootView.findViewById(R.id.progressBarAvatar)
@@ -69,6 +82,16 @@ class Settings : Fragment() {
 
         listSettings = rootView.findViewById(R.id.list_settings)
 
+        CometChat.init(this.requireContext(),appID,appSettings, object: CometChat.CallbackListener<String>(){
+            override fun onSuccess(p0: String?) {
+
+            }
+
+            override fun onError(p0: CometChatException?) {
+            }
+
+        })
+
 
 
 
@@ -85,6 +108,20 @@ class Settings : Fragment() {
                     2 -> Toast.makeText(context,"Coming Soon",Toast.LENGTH_SHORT).show()
                     3 -> {
                         mAuth.signOut()
+
+                        if (CometChat.getLoggedInUser() != null){
+                            CometChat.logout(object: CometChat.CallbackListener<String>(){
+                                override fun onSuccess(p0: String?) {
+                                    Log.d(TAG, "Logout completed successfully")
+                                }
+
+                                override fun onError(p0: CometChatException?) {
+                                    Log.d(TAG, "Logout failed with exception: " + p0!!.message);
+                                }
+
+                            })
+                        }
+
                         val intent= Intent(activity, LoginActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)

@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.cometchat.pro.core.AppSettings
+import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.exceptions.CometChatException
 import com.example.findyourpets.R
 import com.google.firebase.database.*
 import com.example.findyourpets.`object`.User
@@ -12,22 +15,30 @@ import com.example.findyourpets.fragment.NewsFeed
 import com.example.findyourpets.fragment.Profile
 import com.example.findyourpets.fragment.Settings
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.ktx.getValue
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var ref:DatabaseReference
-    private lateinit var nuser:User
+    private var nuser:User = User()
 
     private val newsFeed:Fragment= NewsFeed()
     private val profile:Fragment= Profile()
-    //private val uploadPost:Fragment= UploadPost()
     private val settings:Fragment= Settings()
     private val fManager:FragmentManager = supportFragmentManager
     private var active:Fragment= newsFeed
 
+    var apiKey: String = "3ac99f1d28610dd2d009b40300762140354758e6"
+    var appID : String = "208055a14a02152"
+    var region: String = "us"
+    var authKey: String = "8f6c81a29d471c4ee96f5c94da978cf999f30dfa"
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        val appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region)
+            .build()
 
         ref=FirebaseDatabase.getInstance().reference
         val userEmail:String = intent.extras!!.getString("email")!!
@@ -39,6 +50,31 @@ class HomeActivity : AppCompatActivity() {
         val userPhotoUri: String = intent.extras!!.getString("photoUri")!!
         //val userPhone:String=intent.extras!!.getString("phoneNumber")!!
 
+        CometChat.init(this,appID,appSettings, object: CometChat.CallbackListener<String>(){
+            override fun onSuccess(p0: String?) {
+
+            }
+
+            override fun onError(p0: CometChatException?) {
+            }
+
+        })
+
+        if (CometChat.getLoggedInUser() == null){
+            CometChat.login(userID, authKey, object: CometChat.CallbackListener<com.cometchat.pro.models.User>(){
+                override fun onSuccess(p0: com.cometchat.pro.models.User?) {
+                }
+
+                override fun onError(p0: CometChatException?) {
+
+                }
+
+            } )
+        }
+
+
+
+
         ref.child("Users/").child(userID).addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 print("failed")
@@ -49,12 +85,16 @@ class HomeActivity : AppCompatActivity() {
                 if (user==null){
                     nuser= User(userEmail, userName, userAdmin.toBoolean(), userCreatedDate, userActive.toBoolean(), "NA","NA","NA",userPhotoUri)
                     ref.child("Users/").child("$userID/").setValue(nuser)
+
                 }
                 else{
                     nuser=user
+
                 }
             }
         })
+
+
 
         val bottomNavigationView:BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
