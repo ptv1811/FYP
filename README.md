@@ -10,5 +10,5 @@ information of lost/found pet.
 **App UI and features**
 
 -   **Login screen**
-      <img src="image/1.jpg" width = "400">
+      <img src="image/Pinder/1.jpg" width = "400">
   
