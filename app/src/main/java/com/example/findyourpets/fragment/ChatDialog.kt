@@ -84,11 +84,6 @@ class ChatDialog : Fragment(){
             }
         } )
 
-
-
-
-
-
         return rootView
     }
 
