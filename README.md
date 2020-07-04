@@ -29,6 +29,18 @@ information of lost/found pet.
       
       <img src="image/Pinder/7.jpg" width = "400">
       
+-   **Upload post feature:**
+      You have to go through 2 steps to be able to upload a post to newfeed.
+      
+       <img src="image/Pinder/10.jpg" width = "400">
+       
+       
+       <img src="image/Pinder/11.jpg" width = "400">
+       
+       
+       <img src="image/Pinder/12.jpg" width = "400">
+      
+      If Save button is clicked, newfeed will be updated with your new post.
 -   **Chat Feature:**
       Chat feature is hosted by Comet Chat (Free trial 30 days only). Users will get real-time incoming messages and previous 
       messages.
