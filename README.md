@@ -56,9 +56,9 @@ information of lost/found pet.
       For Admin webapp, please refer to this repository: [Pinder Admin WebApp](https://github.com/nnphong1904/pet-dashboard)
       
 **References**
--     Firebase Authentication, Realtime Database, Storage: https://firebase.google.com/
--     CometChat: https://www.cometchat.com/
--     Chatkit by stfalcon studio: https://github.com/stfalcon-studio/ChatKit
--     Resources & drawables on freepik: https://www.freepik.com/
+-     Firebase Authentication, Realtime Database, Storage:[Firebase](https://firebase.google.com)
+-     CometChat: [CometChat](https://www.cometchat.com)
+-     Chatkit by stfalcon studio: (https://github.com/stfalcon-studio/ChatKit)
+-     Resources & drawables on freepik: [Freepik](https://www.freepik.com)
 
 
