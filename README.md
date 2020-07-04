@@ -53,4 +53,4 @@ information of lost/found pet.
       <img src="image/Pinder/5.jpg" width = "400">
       
 -   **Admin webapp:**
-      For Admin webapp, please refer to this repository: [a link](https://github.com/nnphong1904/pet-dashboard)
+      For Admin webapp, please refer to this repository: [Pinder Admin WebApp](https://github.com/nnphong1904/pet-dashboard)
