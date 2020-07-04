@@ -61,6 +61,17 @@ class Settings : Fragment() {
         mAuth = FirebaseAuth.getInstance()
         user = mAuth.currentUser!!
 
+        CometChat.login(user.uid, authKey, object: CometChat.CallbackListener<com.cometchat.pro.models.User>(){
+            override fun onSuccess(p0: com.cometchat.pro.models.User?) {
+
+            }
+
+            override fun onError(p0: CometChatException?) {
+
+            }
+
+        } )
+
         progressBarAvatar.visibility= View.VISIBLE
         ref = FirebaseDatabase.getInstance().getReference("Users/").child(user.uid)
         val menuListener = object : ValueEventListener{
@@ -82,7 +93,7 @@ class Settings : Fragment() {
 
         listSettings = rootView.findViewById(R.id.list_settings)
 
-        CometChat.init(this.requireContext(),appID,appSettings, object: CometChat.CallbackListener<String>(){
+        /*CometChat.init(this.requireContext(),appID,appSettings, object: CometChat.CallbackListener<String>(){
             override fun onSuccess(p0: String?) {
 
             }
@@ -90,7 +101,7 @@ class Settings : Fragment() {
             override fun onError(p0: CometChatException?) {
             }
 
-        })
+        })*/
 
 
 
@@ -109,7 +120,6 @@ class Settings : Fragment() {
                     3 -> {
                         mAuth.signOut()
 
-                        if (CometChat.getLoggedInUser() != null){
                             CometChat.logout(object: CometChat.CallbackListener<String>(){
                                 override fun onSuccess(p0: String?) {
                                     Log.d(TAG, "Logout completed successfully")
@@ -120,7 +130,7 @@ class Settings : Fragment() {
                                 }
 
                             })
-                        }
+
 
                         val intent= Intent(activity, LoginActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)

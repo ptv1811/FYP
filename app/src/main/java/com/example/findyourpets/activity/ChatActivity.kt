@@ -79,7 +79,9 @@ class ChatActivity : AppCompatActivity() {
         receiveMessRef = FirebaseDatabase.getInstance().reference.child("Messages/")
 
 
-        if (CometChat.getLoggedInUser() == null){
+
+
+        //if (CometChat.getLoggedInUser() == null){
             CometChat.login(curUser.uid, authKey, object: CometChat.CallbackListener<com.cometchat.pro.models.User>(){
                 override fun onSuccess(p0: com.cometchat.pro.models.User?) {
 
@@ -90,7 +92,7 @@ class ChatActivity : AppCompatActivity() {
                 }
 
             } )
-        }
+       // }
 
         chatBackButton.setOnClickListener {
             finish()
@@ -112,6 +114,26 @@ class ChatActivity : AppCompatActivity() {
 
         }
         userRef.addValueEventListener(menuListener)
+        Log.d("ChatReceiverID: ", chatReceiverID)
+
+        CometChat.addLoginListener("UNIQUE", object : CometChat.LoginListener(){
+            override fun loginSuccess(p0: com.cometchat.pro.models.User?) {
+                Log.d("LoginListener", "loginSuccess " + p0.toString())
+            }
+
+            override fun loginFailure(p0: CometChatException?) {
+
+            }
+
+            override fun logoutSuccess() {
+
+            }
+
+            override fun logoutFailure(p0: CometChatException?) {
+
+            }
+
+        })
 
 
 
@@ -131,7 +153,7 @@ class ChatActivity : AppCompatActivity() {
                 Picasso.get().load(url).into(imageView)
             }
 
-        adapter = MessagesListAdapter(CometChat.getLoggedInUser().uid, imageLoader)
+        adapter = MessagesListAdapter(curUser.uid.toLowerCase(), imageLoader)
         chatListMessage.setAdapter(adapter)
 
         addIncomingMessageListener()
@@ -151,7 +173,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun getPreviousMessage() {
-        val messageRequest = MessagesRequest.MessagesRequestBuilder().setUID(chatReceiverID).setLimit(20)
+        val messageRequest = MessagesRequest.MessagesRequestBuilder().setUID(chatReceiverID.toLowerCase()).setLimit(20)
             .build()
         messageRequest.fetchPrevious(object: CometChat.CallbackListener<List<BaseMessage>>(){
             override fun onSuccess(p0: List<BaseMessage>?) {
