@@ -57,8 +57,11 @@ information of lost/found pet.
       
 **References**
 Firebase Authentication, Realtime Database, Storage:[Firebase](https://firebase.google.com)
+
 CometChat: [CometChat](https://www.cometchat.com)
+
 Chatkit by stfalcon studio: (https://github.com/stfalcon-studio/ChatKit)
+
 Resources & drawables on freepik: [Freepik](https://www.freepik.com)
 
 
