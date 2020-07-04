@@ -54,11 +54,13 @@ class NewsFeed : Fragment() {
 
     override fun onStop() {
         super.onStop()
+        shimmerFrameLayout.visibility = View.INVISIBLE
         myAdapter.stopListening()
     }
 
     override fun onResume() {
         super.onResume()
+        shimmerFrameLayout.visibility = View.VISIBLE
         myAdapter.startListening()
     }
 
@@ -146,7 +148,7 @@ class NewsFeed : Fragment() {
 
                     holder.newFeedChat.setOnClickListener {
 
-                        if (userID == curUser.uid){
+                        if (userID == curUser.uid.toLowerCase()){
                             Toast.makeText(context, "You can't chat to yourself", Toast.LENGTH_SHORT).show()
                         }
                         else {

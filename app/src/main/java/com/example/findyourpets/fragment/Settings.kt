@@ -73,7 +73,7 @@ class Settings : Fragment() {
         } )
 
         progressBarAvatar.visibility= View.VISIBLE
-        ref = FirebaseDatabase.getInstance().getReference("Users/").child(user.uid)
+        ref = FirebaseDatabase.getInstance().getReference("Users/").child(user.uid.toLowerCase())
         val menuListener = object : ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val photoUri : Uri = Uri.parse(dataSnapshot.child("photoUri").getValue(String::class.java))
@@ -92,19 +92,6 @@ class Settings : Fragment() {
 
 
         listSettings = rootView.findViewById(R.id.list_settings)
-
-        /*CometChat.init(this.requireContext(),appID,appSettings, object: CometChat.CallbackListener<String>(){
-            override fun onSuccess(p0: String?) {
-
-            }
-
-            override fun onError(p0: CometChatException?) {
-            }
-
-        })*/
-
-
-
 
         listSettings.adapter = context?.let { MyAdapter(it, optionsTitle) }
 

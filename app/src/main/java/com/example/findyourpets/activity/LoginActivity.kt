@@ -15,6 +15,7 @@ import com.cometchat.pro.core.AppSettings
 import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.exceptions.CometChatException
 import com.example.findyourpets.R
+import com.example.findyourpets.`object`.User
 import com.facebook.*
 import com.ornach.nobobutton.NoboButton
 import com.facebook.login.LoginManager
@@ -29,7 +30,7 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.*
 
 
 class LoginActivity : AppCompatActivity() {
@@ -43,8 +44,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var mAuth:FirebaseAuth
     lateinit var mGoogleSignInClient:GoogleSignInClient
 
+    private var nuser: User = User()
 
-
+    private lateinit var ref:DatabaseReference
     var appID : String = "208055a14a02152"
     var region: String = "us"
     var authKey: String = "8f6c81a29d471c4ee96f5c94da978cf999f30dfa"
@@ -72,6 +74,7 @@ class LoginActivity : AppCompatActivity() {
         changeColorWord(ss, fcsOrange, fcsOrange2,textView)
 
         //Initialize
+        ref= FirebaseDatabase.getInstance().reference
         val fbLogin:NoboButton= findViewById(R.id.fb_login)
         val ggLogin:NoboButton=findViewById(R.id.gg_login)
         mAuth= FirebaseAuth.getInstance()
@@ -181,14 +184,26 @@ class LoginActivity : AppCompatActivity() {
         if (user!=null){
             val intent= Intent(this, HomeActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.putExtra("email", user.email.toString())
-            intent.putExtra("ID", user.uid.toString())
-            intent.putExtra("name",user.displayName.toString())
-            intent.putExtra("isActive", "true")
-            intent.putExtra("phoneNumber",user.phoneNumber)
-            intent.putExtra("isAdmin", "false")
-            intent.putExtra("photoUri", user.photoUrl.toString())
-            intent.putExtra("createdDated", user.metadata!!.creationTimestamp.toString())
+            intent.putExtra("ID", user.uid)
+
+            ref.child("Users/").child(user.uid.toLowerCase()).addValueEventListener(object :ValueEventListener{
+                override fun onCancelled(p0: DatabaseError) {
+                    print("failed")
+                }
+
+                override fun onDataChange(p0: DataSnapshot) {
+                    val tuser: User? =p0.getValue(User::class.java)
+                    if (tuser==null){
+                        nuser= User(user.email.toString(), user.displayName.toString(),false, user.metadata!!.creationTimestamp.toString(), true, "NA","NA","NA",user.photoUrl.toString())
+                        ref.child("Users/").child("${user.uid.toLowerCase()}/").setValue(nuser)
+
+                    }
+                    else{
+                        nuser=tuser
+
+                    }
+                }
+            })
 
             val cometUser = com.cometchat.pro.models.User(user.uid, user.displayName)
             cometUser.avatar = user.photoUrl.toString()
@@ -203,6 +218,10 @@ class LoginActivity : AppCompatActivity() {
                 }
 
             })
+
+
+
+
 
 
             startActivity(intent)

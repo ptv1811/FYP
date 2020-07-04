@@ -104,14 +104,14 @@ class DetailedInfo : Fragment(){
             }
 
 
-            val currentUserPost = Post(currentUser.uid, datePost, petChosen, petLostOrFound,
+            val currentUserPost = Post(currentUser.uid.toLowerCase(), datePost, petChosen, petLostOrFound,
             petGender, petBreed, petColor, petImageUri.toString(), petName.text!!.toString(), petLostAt.text!!.toString(),
             petPhone.text!!.toString(), petWeightEdit.text!!.toString(), petNote.text!!.toString())
 
             postID = ref.child("Posts/").push().key!!
             ref.child("Posts/").child(postID).setValue(currentUserPost)
 
-            imageRef = storageRef.child("${currentUser.uid}/${postID}/postImage.jpg")
+            imageRef = storageRef.child("${currentUser.uid.toLowerCase()}/${postID}/postImage.jpg")
             petImageUri?.let { it1 -> uploadImageToFireBaseStorage(it1) }
             requireActivity().finish()
             //database = FirebaseDatabase.getInstance().reference.child("Posts/").child(postID)

@@ -61,8 +61,8 @@ class EditProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_profile)
 
         storageRef= storage.reference
-        imageRef = storageRef.child("${currentUser.uid}/avatar.jpg")
-        database = Firebase.database.getReference("Users/").child(currentUser.uid)
+        imageRef = storageRef.child("${currentUser.uid.toLowerCase()}/avatar.jpg")
+        database = Firebase.database.getReference("Users/").child(currentUser.uid.toLowerCase())
 
         val uploadAvatarButton: Button = findViewById(R.id.upload_avatar)
         val backButton: Button = findViewById(R.id.back_button)

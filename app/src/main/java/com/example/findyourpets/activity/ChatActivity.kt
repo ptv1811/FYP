@@ -64,9 +64,7 @@ class ChatActivity : AppCompatActivity() {
         val chatUserAvatar: CircularImageView = customView.findViewById(R.id.chatUserAvatar)
         val chatInputMessage: MessageInput = findViewById(R.id.chatMessageInput)
         chatListMessage = findViewById(R.id.chatMessageList)
-
-
-
+        
        // var receiverUser = User()
 
         chatReceiverID= intent.extras!!.getString("this UserID")!!
@@ -77,9 +75,6 @@ class ChatActivity : AppCompatActivity() {
         chatRef = FirebaseDatabase.getInstance().reference
         messageRef = FirebaseDatabase.getInstance().reference
         receiveMessRef = FirebaseDatabase.getInstance().reference.child("Messages/")
-
-
-
 
         //if (CometChat.getLoggedInUser() == null){
             CometChat.login(curUser.uid, authKey, object: CometChat.CallbackListener<com.cometchat.pro.models.User>(){

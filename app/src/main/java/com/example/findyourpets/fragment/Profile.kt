@@ -66,7 +66,7 @@ class Profile : Fragment() {
 
         profilePost.layoutManager = layoutManager
 
-        options = FirebaseRecyclerOptions.Builder<Post>().setQuery(postRef.orderByChild("userID").equalTo(curUser.uid), Post::class.java)
+        options = FirebaseRecyclerOptions.Builder<Post>().setQuery(postRef.orderByChild("userID").equalTo(curUser.uid.toLowerCase()), Post::class.java)
             .build()
         myAdapter=
             object :FirebaseRecyclerAdapter<Post,FirebaseViewHolder>(options){
@@ -133,7 +133,7 @@ class Profile : Fragment() {
         profilePost.adapter = myAdapter
 
 
-        ref = FirebaseDatabase.getInstance().reference.child("Users/").child(curUser.uid)
+        ref = FirebaseDatabase.getInstance().reference.child("Users/").child(curUser.uid.toLowerCase())
         ref.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
 
@@ -141,8 +141,8 @@ class Profile : Fragment() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue<com.example.findyourpets.`object`.User>()
-                Picasso.get().load(Uri.parse(user!!.photoUri)).fit().into(profileAvatar)
-                profileName.text = user.name
+                Picasso.get().load(Uri.parse(snapshot.child("photoUri").getValue(String::class.java))).fit().into(profileAvatar)
+                profileName.text = user!!.name
                 profileCreatedDate.text = convertMillisToDate(user.createdDate)
 
                 progressBar.visibility = View.GONE

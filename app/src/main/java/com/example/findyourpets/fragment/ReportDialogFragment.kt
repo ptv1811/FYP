@@ -40,7 +40,7 @@ class ReportDialogFragment : BottomSheetDialogFragment() {
 
         val reportID = ref.child("Reports/").push().key
 
-        val report= Report(curUser.uid, userGetReportedID, System.currentTimeMillis(), postGetReportedID)
+        val report= Report(curUser.uid.toLowerCase(), userGetReportedID, System.currentTimeMillis(), postGetReportedID)
 
 
 
